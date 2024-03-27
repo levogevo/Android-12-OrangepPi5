@@ -16,8 +16,8 @@ RUN nala install -y git gnupg flex bison gperf build-essential \
 
 # not from documentation
 RUN nala install -y procps python2.7 libncurses5 libncurses5-dev \
-    bc libssl-dev libelf-dev
+    bc libssl-dev libelf-dev cpio lz4 rsync
+
 RUN ln -snf /bin/python2.7 /bin/python
 RUN ln -snf /bin/python2.7 /bin/python2
-
 RUN ln -snf /bin/bash /bin/sh
