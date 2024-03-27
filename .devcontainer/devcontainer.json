@@ -1,0 +1,4 @@
+{
+    "name": "android_12_container",
+    "image": "android_12_rockchip_docker"    
+}
