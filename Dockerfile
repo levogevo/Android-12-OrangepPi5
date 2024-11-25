@@ -1,4 +1,4 @@
-from debian:bookworm
+FROM debian:bookworm
 
 RUN echo 'deb http://archive.debian.org/debian/ stretch contrib main non-free' >> /etc/apt/sources.list || exit
 RUN apt update && apt full-upgrade -qy || exit 
@@ -16,8 +16,11 @@ RUN nala install -y git gnupg flex bison gperf build-essential \
 
 # not from documentation
 RUN nala install -y procps python2.7 libncurses5 libncurses5-dev \
-    bc libssl-dev libelf-dev cpio lz4 rsync
+    bc libssl-dev libelf-dev cpio lz4 rsync || exit
 
-RUN ln -snf /bin/python2.7 /bin/python
-RUN ln -snf /bin/python2.7 /bin/python2
-RUN ln -snf /bin/bash /bin/sh
+# additional packages
+RUN nala install -y ccache gcc-aarch64-linux-gnu || exit
+
+RUN ln -snf /bin/python2.7 /bin/python || exit
+RUN ln -snf /bin/python2.7 /bin/python2 || exit
+RUN ln -snf /bin/bash /bin/sh || exit
